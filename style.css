@@ -1,20 +1,28 @@
 body {
-    font-family: 'Bitter', serif;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #121212;
 }
 
 #container {
     display: flex;
     flex-direction: column;
+    background-color: #181818;
+    border-radius: 10px;
 }
 
 header {
-    background-color: #a37c5d;
     color: white;
     text-align: center;
-    font-family: 'Bitter', serif;
     font-size: 48px;
     flex-grow: 1;
     padding: 5px;
+}
+
+.line {
+    background-color: #404040;
+    height: 1px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 #contents {
@@ -22,6 +30,9 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    background-color: #181818;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 #card-list {
@@ -35,11 +46,14 @@ header {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 5px;
-    background-color: #d0c4a0;
-    border: 1px solid #fafafa;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #404040;
     flex-grow: 1;
     margin: 5px;
+    border-radius: 15px;
 }
 
 .book-title {
@@ -50,6 +64,7 @@ header {
 .book-author {
     font-size: 16px;
     padding-left: 30px;
+    color: #b3b3b3;
 }
 
 .floating-button {
@@ -58,16 +73,23 @@ header {
     height: 60px;
     right: 40px;
     bottom: 40px;
-    background-color: #d0c4a0;
-    color: #ffffff;
+    background-color: #404040;
+    color: #69e0a5;
     border-radius: 50px;
     text-align: center;
-    box-shadow: 2px 2px 3px #999;
 }
 
 .floating-sign {
     user-select: none;
-    margin-top: 2px;
-    margin-left: 2px;
     font-size: 48px;
+}
+
+#footer {
+    font-style: italic;
+    color: #b3b3b3;
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 10px;
 }
