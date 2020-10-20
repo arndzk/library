@@ -1,0 +1,73 @@
+body {
+    font-family: 'Bitter', serif;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #a37c5d;
+    color: white;
+    text-align: center;
+    font-family: 'Bitter', serif;
+    font-size: 48px;
+    flex-grow: 1;
+    padding: 5px;
+}
+
+#contents {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#card-list {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 5px;
+    background-color: #d0c4a0;
+    border: 1px solid #fafafa;
+    flex-grow: 1;
+    margin: 5px;
+}
+
+.book-title {
+    font-size: 36px;
+    padding: 1px;
+}
+
+.book-author {
+    font-size: 16px;
+    padding-left: 30px;
+}
+
+.floating-button {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    right: 40px;
+    bottom: 40px;
+    background-color: #d0c4a0;
+    color: #ffffff;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+}
+
+.floating-sign {
+    user-select: none;
+    margin-top: 2px;
+    margin-left: 2px;
+    font-size: 48px;
+}
