@@ -35,16 +35,14 @@ function displayBooks(myLibrary) {
         bookCardAuthor.textContent += `${bookAuthor}`;
         let bookCardNumOfPages = document.querySelector(`.pages-display-${i + 1}`);
         bookCardNumOfPages.textContent += `${bookNumPages}`;
-        let bookCardStatus = document.querySelector(`.status-display-${i + 1}`);
-        let bookCardStatusSpan = document.createElement('span');
+        let bookCardStatusDropdownButton = document.querySelector(`.dropdown-button-${i + 1}`);
         if(bookStatus == `Not Read`) {
-            bookCardStatusSpan.classList.add(`not-read`);
+            bookCardStatusDropdownButton.classList.add(`not-read`);
         }
         else if(bookStatus == `Read`) {
-            bookCardStatusSpan.classList.add(`read`);
+            bookCardStatusDropdownButton.classList.add(`read`);
         }
-        bookCardStatusSpan.textContent += `${bookStatus}`;
-        bookCardStatus.appendChild(bookCardStatusSpan);
+        bookCardStatusDropdownButton.innerHTML = `${bookStatus}`;
     }
 }
 
@@ -84,17 +82,32 @@ function generateBookCard(index) {
     bookStatusDisplay.textContent = `Status: `;
     auxCardDisplay.appendChild(bookStatusDisplay);
 
+    let bookStatusDropdown = document.createElement('div');
+    bookStatusDropdown.classList.add(`status-dropdown`, `dropdown${index - 1}`);
+    let statusDropdownButton = document.createElement('div');
+    statusDropdownButton.classList.add(`status-dropdown-button`, `dropdown-button-${index + 1}`);
+    let statusDropdownContent = document.createElement('div');
+    statusDropdownContent.classList.add(`status-dropdown-content`, `dropdown-content-${index + 1}`);
+    let dropdownContentRead = document.createElement('div');
+    dropdownContentRead.classList.add(`content-read`, `read`);
+    dropdownContentRead.innerHTML = `Read`;
+    let dropdownContentNotRead = document.createElement('div');
+    dropdownContentNotRead.classList.add(`content-not-read`, `not-read`);
+    dropdownContentNotRead.innerHTML = `Not Read`;
+    statusDropdownContent.appendChild(dropdownContentRead);
+    statusDropdownContent.appendChild(dropdownContentNotRead);
+    bookStatusDropdown.appendChild(statusDropdownContent);
+    bookStatusDropdown.appendChild(statusDropdownButton);
+
+    bookStatusDisplay.appendChild(bookStatusDropdown);
+
     let cardLineRight = document.createElement('div');
     cardLineRight.classList.add(`card-line`);
     auxCardDisplay.appendChild(cardLineRight);
 
     let cardDeleteButton = document.createElement('div');
     cardDeleteButton.classList.add(`card-delete-button`, `delete-button-${index + 1}`);
-    //let deleteButtonX = document.createElement('span');
     cardDeleteButton.innerHTML = `x`;
-    //deleteButtonX.classList.add(`delete-button-x`);
-    //deleteButtonX.innerHTML = `x`;
-    //cardDeleteButton.appendChild(deleteButtonX);
     auxCardDisplay.appendChild(cardDeleteButton);
 
     bookCard.appendChild(mainCardDisplay);
