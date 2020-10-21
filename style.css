@@ -178,6 +178,7 @@ header {
 }
 
 .status-dropdown-content {
+    user-select: none;
     display: none;
     position: absolute;
     border: 1px solid #404040;

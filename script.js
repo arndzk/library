@@ -8,6 +8,8 @@ addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
 
+document.querySelector(`.floating-button`).addEventListener('click', newBook);
+
 function Book(title, author, numPages, status) {
     this.title = title;
     this.author = author;
@@ -54,6 +56,7 @@ function generateBookCard(index) {
     
     let bookTitleDisplay = document.createElement('div');
     bookTitleDisplay.classList.add(`book-title`, `title-display-${index + 1}`);
+    bookTitleDisplay.addEventListener('click', updateBookStatus);
     mainCardDisplay.appendChild(bookTitleDisplay);
 
     let bookAuthorDisplay = document.createElement('div');
@@ -83,17 +86,19 @@ function generateBookCard(index) {
     auxCardDisplay.appendChild(bookStatusDisplay);
 
     let bookStatusDropdown = document.createElement('div');
-    bookStatusDropdown.classList.add(`status-dropdown`, `dropdown${index - 1}`);
+    bookStatusDropdown.classList.add(`status-dropdown`, `dropdown-${index + 1}`);
     let statusDropdownButton = document.createElement('div');
     statusDropdownButton.classList.add(`status-dropdown-button`, `dropdown-button-${index + 1}`);
     let statusDropdownContent = document.createElement('div');
     statusDropdownContent.classList.add(`status-dropdown-content`, `dropdown-content-${index + 1}`);
     let dropdownContentRead = document.createElement('div');
-    dropdownContentRead.classList.add(`content-read`, `read`);
+    dropdownContentRead.classList.add(`content-read-${index + 1}`, `read`);
     dropdownContentRead.innerHTML = `Read`;
+    dropdownContentRead.addEventListener('click', updateBookStatus);
     let dropdownContentNotRead = document.createElement('div');
-    dropdownContentNotRead.classList.add(`content-not-read`, `not-read`);
+    dropdownContentNotRead.classList.add(`content-not-read-${index + 1}`, `not-read`);
     dropdownContentNotRead.innerHTML = `Not Read`;
+    dropdownContentNotRead.addEventListener('click', updateBookStatus);
     statusDropdownContent.appendChild(dropdownContentRead);
     statusDropdownContent.appendChild(dropdownContentNotRead);
     bookStatusDropdown.appendChild(statusDropdownContent);
@@ -108,12 +113,44 @@ function generateBookCard(index) {
     let cardDeleteButton = document.createElement('div');
     cardDeleteButton.classList.add(`card-delete-button`, `delete-button-${index + 1}`);
     cardDeleteButton.innerHTML = `x`;
+    cardDeleteButton.addEventListener('click', deleteBook);
     auxCardDisplay.appendChild(cardDeleteButton);
 
     bookCard.appendChild(mainCardDisplay);
     bookCard.appendChild(auxCardDisplay);
 
     return bookCard;
+}
+
+function updateBookStatus() {
+    let thisClassList = this.classList;
+    console.table(thisClassList);
+    let arrayIndex = thisClassList[0].slice(-1);
+    console.log(arrayIndex);
+    myLibrary[arrayIndex - 1].status = `${this.innerHTML}`;
+    clearCardList();
+    displayBooks(myLibrary);
+}
+
+function deleteBook() {
+    let thisClassList = this.classList;
+    console.table(thisClassList);
+
+    let arrayIndex = thisClassList[1].slice(-1);
+    console.log(arrayIndex);
+    myLibrary.splice(arrayIndex-1, 1);
+    console.table(myLibrary);
+    clearCardList();
+    displayBooks(myLibrary);
+}
+
+function clearCardList() {
+    let cardList = document.querySelector('#card-list');
+    cardList.innerHTML = ``;
+}
+
+function newBook() {
+
 }
 
 displayBooks(myLibrary);
