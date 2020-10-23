@@ -366,3 +366,9 @@ select {
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
+
+  #red-heart {
+      font-style: normal;
+      color: red;
+      font-size: 16px;
+  }
