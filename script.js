@@ -1,20 +1,39 @@
 let myLibrary = [];
 
-const book1 = new Book(`The Fellowship of the Ring`, `J.R.R. Tolkien`, 423, `Read`);
-const book2 = new Book(`The Two Towers`, `J.R.R. Tolkien`, 352, `Not Read`);
-const book3 = new Book(`The Return of the King`, `J.R.R. Tolkien`, 416, `Not Read`);
-
-addBookToLibraryFiller(book1);
-addBookToLibraryFiller(book2);
-addBookToLibraryFiller(book3);
-
 document.querySelector(`.floating-button`).addEventListener('click', generateNewBookForm);
 
-function Book(title, author, numPages, status) {
-    this.title = title;
-    this.author = author;
-    this.numPages = numPages;
-    this.status = status;
+class Book {
+    constructor(title, author, numPages, status) {
+        this.title = title;
+        this.author = author;
+        this.numPages = numPages;
+        this.status = status;
+    }
+
+    set title(title) {
+        this._title = title;
+    }
+    get title() {
+        return this._title;
+    }
+    set author(author) {
+        this._author = author;
+    }
+    get author() {
+        return this._author;
+    }
+    set numPages(numPages) {
+        this._numPages = numPages;
+    }
+    get numPages() {
+        return this._numPages;
+    }
+    set status(status) {
+        this._status = status;
+    }
+    get status() {
+        return this._status;
+    }
 }
 
 function addBookToLibraryFiller(book) {
@@ -288,5 +307,13 @@ function addBookToLibrary() {
     clearCardList();
     displayBooks(myLibrary);
 }
+
+const book1 = new Book(`The Fellowship of the Ring`, `J.R.R. Tolkien`, 423, `Read`);
+const book2 = new Book(`The Two Towers`, `J.R.R. Tolkien`, 352, `Not Read`);
+const book3 = new Book(`The Return of the King`, `J.R.R. Tolkien`, 416, `Not Read`);
+
+addBookToLibraryFiller(book1);
+addBookToLibraryFiller(book2);
+addBookToLibraryFiller(book3);
 
 displayBooks(myLibrary);
